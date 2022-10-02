@@ -10,7 +10,7 @@ To install the download-manager:
 
 To download files from download-manager use the following command to download and see the progress bar:
 
-```download-manager download --fileUrl $FILEURL --numConcParts $NUMCONCPARTS --output $OUTPUT```
+```download-manager download --fileUrl $FILEURL --numConcParts $NUMCONCPARTS --workers $WORKERS --output $OUTPUT ```
 
 ## Tools
 
