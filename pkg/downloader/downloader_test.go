@@ -35,6 +35,5 @@ func TestDownload(t *testing.T) {
 		t.Errorf("file not present at downloadPath: %s", err.Error())
 	}
 
-	t.Logf("download succesful")
 	defer server.Close()
 }

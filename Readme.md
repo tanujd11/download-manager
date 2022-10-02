@@ -6,11 +6,11 @@ download-manager is a concurrent downloader which uses go concurrency to feature
 
 To install the download-manager:
 
-```go get github.com/tanujd11/download-manager```
+```go install github.com/tanujd11/download-manager@latest```
 
 To download files from download-manager use the following command to download and see the progress bar:
 
-```downloader download --fileUrl $FILEURL --numConcParts $NUMCONCPARTS --output $OUTPUT```
+```download-manager download --fileUrl $FILEURL --numConcParts $NUMCONCPARTS --output $OUTPUT```
 
 ## Tools
 

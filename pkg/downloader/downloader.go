@@ -36,7 +36,7 @@ type Downloader struct {
 func (d *Downloader) Download(fileUrl string) (downloadPath string, err error) {
 	// Create a head request to get the content length of the
 	res, err := http.Head(fileUrl)
-	if err != nil {
+	if res.StatusCode > 299 {
 		return "", err
 	}
 	contentLength := int(res.ContentLength)
