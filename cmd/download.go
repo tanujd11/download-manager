@@ -25,11 +25,13 @@ var downloadCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 
 		numConcParts, _ := strconv.Atoi(cmd.Flag("numConcParts").Value.String())
+		workers, _ := strconv.Atoi(cmd.Flag("workers").Value.String())
 		fileUrl := cmd.Flag("fileUrl").Value.String()
 
 		opts := downloader.DownloadOptions{
 			DownloadPath: cmd.Flag("output").Value.String(),
 			NumConcParts: numConcParts,
+			Workers:      workers,
 		}
 
 		downloadClient := downloader.Downloader{
@@ -60,6 +62,7 @@ func init() {
 	downloadCmd.PersistentFlags().String("fileUrl", "", "http path of the file to download")
 	downloadCmd.PersistentFlags().String("output", "", "the path on your machine where the file will be downloaded")
 	downloadCmd.PersistentFlags().Int("numConcParts", 10, "number of concurrent paths to be donwloaded")
+	downloadCmd.PersistentFlags().Int("workers", 5, "size of the worker pool")
 
 	if err := downloadCmd.MarkPersistentFlagRequired("fileUrl"); err != nil {
 		fmt.Println(err.Error())

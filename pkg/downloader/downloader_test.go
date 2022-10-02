@@ -17,6 +17,7 @@ func TestDownload(t *testing.T) {
 	downloadOptions := DownloadOptions{
 		DownloadPath: "1gig.bin",
 		NumConcParts: 15,
+		Workers:      5,
 	}
 	downloader := Downloader{
 		DownloadOptions: downloadOptions,
@@ -35,5 +36,16 @@ func TestDownload(t *testing.T) {
 		t.Errorf("file not present at downloadPath: %s", err.Error())
 	}
 
-	defer server.Close()
+	f1, err := os.Stat(filepath.Join(".", "testdata", "1gig.bin"))
+	if err != nil {
+		return
+	}
+	f2, err := os.Stat("1gig.bin")
+	if err != nil {
+		return
+	}
+
+	if f1.Size() != f2.Size() {
+		t.Errorf("downloaded file not the same as server file")
+	}
 }
