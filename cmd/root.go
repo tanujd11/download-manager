@@ -13,7 +13,7 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "downloader",
+	Use:   "download-manager",
 	Short: "A concurrent downloader in golang",
 	Long: `downloader is a CLI tool to concurrently handle download
 	of files of huge size concurrently to make it fast`,

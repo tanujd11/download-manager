@@ -35,8 +35,8 @@ func (chunk *Chunk) Download(fileUrl string, chunkDir string) error {
 		return err
 	}
 	req.Header.Set("Range", fmt.Sprintf("bytes=%v-%v", chunk.Start, chunk.End))
-	res, _ := http.DefaultClient.Do(req)
-	if err != nil {
+	res, err := http.DefaultClient.Do(req)
+	if res.StatusCode > 299 {
 		return err
 	}
 
