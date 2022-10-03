@@ -29,18 +29,18 @@ type Downloader struct {
 	Mutex           *sync.Mutex
 }
 
-//
+// DownloadOptions is the configuration for downloading
 type DownloadOptions struct {
-	//
+	// DownloadPath is the path where the file will be downloaded
 	DownloadPath string
 	// NumConcParts represents max number of go-routines used to download diff parts
 	// of a large file simultaneously.
 	NumConcParts int
-	//
+	// Workers is number of workers in thread pool
 	Workers int
 }
 
-//
+// NewDownloadClient is a factory function for creating DownloadClient
 func NewDownloadClient(opts DownloadOptions) DownloadClient {
 	downloadClient := &Downloader{DownloadOptions: opts}
 	return downloadClient
@@ -121,6 +121,7 @@ func (d *Downloader) Download(fileUrl string) (downloadPath string, err error) {
 	return d.DownloadOptions.DownloadPath, nil
 }
 
+// GetDownloadProgress returns download progress at runtime
 func (d *Downloader) GetDownloadProgress(fileUrl string) int {
 	d.Mutex.Lock()
 	progress := d.Progress

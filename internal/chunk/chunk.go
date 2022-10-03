@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 )
 
+// Chunk is a struct which holds data regarding starting and end point of file
 type Chunk struct {
 	Start int
 	End   int
@@ -29,6 +30,7 @@ func (chunk *Chunk) SetIndex(index int) *Chunk {
 	return chunk
 }
 
+// Dowwnload downloads a chunk in a path
 func (chunk Chunk) Download(fileUrl string, chunkDir string) error {
 	req, err := http.NewRequest("GET", fileUrl, nil)
 	if err != nil {
@@ -52,6 +54,7 @@ func (chunk Chunk) Download(fileUrl string, chunkDir string) error {
 	return nil
 }
 
+// Merge merges chunks array and create final file
 func Merge(chunks []Chunk, downloadPath string, chunkDir string) error {
 	f, err := os.OpenFile(downloadPath, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
 	if err != nil {
@@ -74,6 +77,7 @@ func Merge(chunks []Chunk, downloadPath string, chunkDir string) error {
 	return nil
 }
 
+// Cleanup deletes tmp files after the download is completed
 func Cleanup(chunkDir string) error {
 	files, err := filepath.Glob(fmt.Sprintf("%s/file-*.tmp", chunkDir))
 	if err != nil {
