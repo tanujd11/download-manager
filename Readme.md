@@ -1,6 +1,6 @@
 # download-manager
 
-download-manager is a concurrent downloader which uses go concurrency to features to concurrently download huge files to make it fast.
+download-manager is a concurrent downloader which uses go concurrency features to concurrently download huge files with worker thread pools for concurrency control to make it fast.
 
 ## Usage
 
