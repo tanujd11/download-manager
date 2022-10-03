@@ -5,7 +5,6 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -17,10 +16,6 @@ var rootCmd = &cobra.Command{
 	Short: "A concurrent downloader in golang",
 	Long: `downloader is a CLI tool to concurrently handle download
 	of files of huge size concurrently to make it fast`,
-
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("download manager called")
-	},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
