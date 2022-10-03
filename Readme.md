@@ -8,9 +8,14 @@ To install the download-manager:
 
 ```go install github.com/tanujd11/download-manager@latest```
 
-To download files from download-manager use the following command to download and see the progress bar:
+To download files from download-manager use the following command to download and see the progress bar. Ensure that you have $GOPATH in your $PATH env:
 
 ```download-manager download --fileUrl $FILEURL --numConcParts $NUMCONCPARTS --workers $WORKERS --output $OUTPUT ```
+
+- fileUrl: http path to download file
+- numConcParts: number of concurrent parts to divide file in to download
+- workers: number of worker threads in the thread pool for concurrency control
+- output: path on your local where file will be download
 
 ## Tools
 
